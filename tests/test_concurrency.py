@@ -96,7 +96,7 @@ def test_multiobject_1():
     assert sum(m.call(mul, b=10)) == 450
     assert sum(m.call(mul, 1, 1, 1)) == 65
 
-    assert m.filter(None).L == [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    assert m.filter(None).L == (1, 2, 3, 4, 5, 6, 7, 8, 9)
     assert sum(m.denominator) == 10
 
     with pytest.raises(MultiException) as info:
@@ -133,7 +133,7 @@ def test_multiobject_zip_with():
     m.zip_with(range(5), range(6))  # too many objects
 
     ret = m.zip_with(range(1, 5)).call(lambda a, b: a+b).L
-    assert ret == [1, 3, 5, 7]
+    assert ret == (1, 3, 5, 7)
 
 
 def test_logged_lock():
